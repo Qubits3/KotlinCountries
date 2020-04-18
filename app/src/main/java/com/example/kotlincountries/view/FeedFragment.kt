@@ -45,6 +45,14 @@ class FeedFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }*/
 
+        swipe_refresh_layout.setOnRefreshListener {
+            countryList.visibility = View.GONE
+            countryError.visibility = View.GONE
+            countryLoading.visibility = View.VISIBLE
+            viewModel.refreshData()
+            swipe_refresh_layout.isRefreshing = false
+        }
+
         observeLiveData()
     }
 
